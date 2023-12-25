@@ -1,0 +1,385 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: tan;
+        }
+        .side,.center{
+            box-sizing: border-box;
+            position: relative;
+            width: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: max-content;
+            padding: 50px;
+            overflow: hidden;
+        }
+        .center{
+            background-color: aqua;
+        }
+        .side{
+            background-color: rgb(43, 50, 48);
+        }
+        .form input[type="text"]{
+            width: 200px;
+            height: 40px;
+            border-radius: 20px;
+            outline: none;
+            border: navajowhite;
+            background-color: rgba(145, 42, 42, 0.9);
+            color: white;
+            transition: 1s ease;
+            padding-left: 30px;
+            box-sizing: border-box;
+            margin-right: 10px;
+        }
+        #btn{
+            background-color: rgb(121, 147, 139);
+            border: rgb(76, 134, 134);
+            width: 70px;
+            height: 40px;
+            border-radius: 20px;
+            transition: 1s ease-in;
+            cursor: pointer;
+            position: absolute;
+            top: -40px;
+
+        }
+        input[type="text"]:focus{
+            border-radius: 0px;
+            transition: 1s ease;
+            border: none;
+            background-color: white;
+            color: black;
+        }
+       
+            ul{
+            list-style-type: none;
+        }
+        .list ul li{
+            background-color: rgb(53, 57, 57);
+            width: 250px;
+            color: yellow;
+            text-align: center;
+            height: 50px;
+            line-height: 50px;
+            margin-bottom: 2px;
+            border-radius: 10px;
+            transition: 1s ease-in;
+        }.l ul li{
+            background-color: rgb(53, 57, 57);
+            width: 250px;
+            color: yellow;
+            text-align: center;
+            height: 50px;
+            line-height: 50px;
+            margin-bottom: 2px;
+            border-radius: 10px;
+            transition: 1s ease-in;
+        }
+        .list ul li:hover{
+            background-color: red;
+            transition: 1s ease-in;
+            color: white;
+        }.l ul li:hover{
+            background-color: red;
+            transition: 1s ease-in;
+            color: white;
+        }
+        .main{
+            display: flex;
+                align-items: flex-start;
+            justify-content: space-around;
+        }
+        #go-right{
+            position: absolute;
+            top: 0%;
+            right: 0;
+            width: 70px;
+            height: 30px;
+            color: white;
+            margin: 10px;
+            border: none;
+            background-color: rebeccapurple;
+            cursor: pointer;
+        }
+        #go-left{
+            position: absolute;
+            top: 0%;
+            left: 0;
+            width: 70px;
+            height: 30px;
+            color: white;
+            margin: 10px;
+            border: none;
+            background-color: rebeccapurple;
+            cursor: pointer;
+        }
+        .key{
+            background-color: black;
+            color: white;
+            width: 26px;
+            height: 26px;
+            text-align: center;
+            line-height: 26px;
+            cursor: pointer;
+            border-radius: 10px; 
+            margin: 2px;
+            float: left;
+        }
+        .keys{
+            background-color: green;
+        }
+        .bg{
+            background-color: red;
+        }
+        #showKeyboard{
+            margin-left: 10px;
+            width: 90px;
+            height: 40px;
+            margin-bottom: 20px;
+            border: none;
+            cursor: pointer;
+
+            position: absolute;
+            top: 5px;
+            right: 90px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="main">
+        <div class="side">
+            <div class="form">
+                <h3 style="color: white;" id=""> <span style="color: black;" id="span">.</span><span id="alert"></span></h3>
+                <input type="text" name="" id="value" onkeyup="show(); removeAlert(); ">
+                <button id="btn" onclick="add()">Add</button>
+                <button id="go-right" onclick="goRight()">-></button>
+                <button  id="showKeyboard"onclick="showKeyboard();">KeyBoard</button>
+                <div class="list">
+                    <ul  id="list">
+                        <li>Home</li>
+                        <li>Home</li>
+                        <li>Home</li>
+                        <li>Home</li>
+                        <li>Home</li>
+                        <li>Home</li>
+                    </ul>
+                </div>
+            </div>
+        </div><div class="center" id="center">
+            <div class="form">
+                <div class="keys">
+                    <div class="key" id="key-clickQ" onclick="keyQ()">q</div>
+                    <div class="key" id="key-clickW" onclick="keyW()">w</div>
+                    <div class="key" id="key-clickE" onclick="keyE()">e</div>
+                    <div class="key" id="key-clickR" onclick="keyR()">r</div>
+                    <div class="key" id="key-clickT" onclick="keyT()">t</div>
+                    <div class="key" id="key-clickY" onclick="keyY()">y</div>
+                    <div class="key" id="key-clickU" onclick="keyU()">u</div>
+                    <div class="key" id="key-clickI" onclick="keyI()">i</div>
+                    <div class="key" id="key-clickO" onclick="keyO()">o</div>
+                    <div class="key" id="key-clickP" onclick="keyP()">p</div>
+                    <div class="key" id="key-click"  style="background-color: aqua; margin-left: -10px;"></div>
+                    <div class="key" id="key-clickA" onclick="keyA()">a</div>
+                    <div class="key" id="key-clickS" onclick="keyS()">s</div>
+                    <div class="key" id="key-clickD" onclick="keyD()">d</div>
+                    <div class="key" id="key-clickF" onclick="keyF()">f</div>
+                    <div class="key" id="key-clickG" onclick="keyG()">g</div>
+                    <div class="key" id="key-clickH" onclick="keyH()">h</div>
+                    <div class="key" id="key-clickJ" onclick="keyJ()">j</div>
+                    <div class="key" id="key-clickK" onclick="keyK()">k</div>
+                    <div class="key" id="key-clickL" onclick="keyL()">l</div>
+                    <div class="key" id="key-clickShift" onclick="keyShift()" style="width: 52px;">Shift</div>
+                    <div class="key" id="key-clickZ" onclick="keyZ()" style="margin-left: px;">z</div>
+                    <div class="key" id="key-clickX" onclick="keyX()">x</div>
+                    <div class="key" id="key-clickC" onclick="keyC()">c</div>
+                    <div class="key" id="key-clickV" onclick="keyV()">v</div>
+                    <div class="key" id="key-clickB" onclick="keyB()">b</div>
+                    <div class="key" id="key-clickN" onclick="keyN()">n</div>
+                    <div class="key" id="key-clickM" onclick="keyM()">m</div>
+                    <div class="key" id="key-click-Comma" onclick="keyComma()">,</div>
+                    <div class="key" id="key-click" onclick="key(' ')" style="margin-left: 95px; width: 135px;"></div>
+                </div>
+            </div>
+    
+        </div><div class="side">
+            <div class="form">
+                <div class="l">
+                    <button id="go-left" onclick="goLeft()"> <-</button>
+                    <ul  id="list-right">
+                        <li>Home</li>
+                    </ul>
+                </div>
+            </div>
+    
+        </div>
+    </div>
+</body>
+</html>
+<script>
+   function removeAlert(){
+    
+    document.getElementById("alert").innerText="";
+   }
+   
+    function add(){
+        var value = document.getElementById("value").value;
+        if(value=="")
+        {
+            // alert("Field is Required");
+            document.getElementById("alert").innerText="Field is Empty";
+        }
+        else{
+            
+        var list  = document.getElementById("list");
+        var elem  = document.createElement("li");
+        elem.append(value);
+        list.appendChild(elem);
+        var value = document.getElementById("value").value="";
+        }
+    }
+
+    function show(){
+    var btn = document.getElementById("btn").style.top="110px";
+    }
+
+    function goRight(){
+        
+        var list  = document.getElementById("list");
+        var listRight  = document.getElementById("list-right");
+        var removeItem = list.children[0];
+        list.removeChild(removeItem);
+        var clone = removeItem.cloneNode(true);
+        listRight.appendChild(clone);
+    }
+    function goLeft(){
+        var list  = document.getElementById("list-right");
+        var listRight  = document.getElementById("list");
+        var removeItem = list.children[0];
+        list.removeChild(removeItem);
+        var clone = removeItem.cloneNode(true);
+        listRight.appendChild(clone);
+    }
+    function key(a) {
+        var keyClick = document.getElementById("key-click").innerText;
+        console.log(keyClick);
+        var value = document.getElementById("value").value;
+        var sum=value+a;
+        var value = document.getElementById("value").value=sum;
+        show();
+    }
+     
+function keyQ(){ removeAlert(); setFocus(); var keyClick = document.getElementById("key-clickQ").innerText; var val = document.getElementById("value").value;  var sum=val+keyClick; console.log(sum);  document.getElementById("value").value=sum;    show();}
+function keyW(){ removeAlert(); setFocus(); var keyClick = document.getElementById("key-clickW").innerText; var val = document.getElementById("value").value;  var sum=val+keyClick; console.log(sum);  document.getElementById("value").value=sum;    show();}
+function keyE(){ removeAlert(); setFocus(); var keyClick = document.getElementById("key-clickE").innerText; var val = document.getElementById("value").value;  var sum=val+keyClick; console.log(sum);  document.getElementById("value").value=sum;    show();}
+function keyR(){ removeAlert(); setFocus(); var keyClick = document.getElementById("key-clickR").innerText; var val = document.getElementById("value").value;  var sum=val+keyClick; console.log(sum);  document.getElementById("value").value=sum;    show();}
+function keyT(){ removeAlert(); setFocus(); var keyClick = document.getElementById("key-clickT").innerText; var val = document.getElementById("value").value;  var sum=val+keyClick; console.log(sum);  document.getElementById("value").value=sum;    show();}
+function keyY(){ removeAlert(); setFocus(); var keyClick = document.getElementById("key-clickY").innerText; var val = document.getElementById("value").value;  var sum=val+keyClick; console.log(sum);  document.getElementById("value").value=sum;    show();}
+function keyU(){ removeAlert(); setFocus(); var keyClick = document.getElementById("key-clickU").innerText; var val = document.getElementById("value").value;  var sum=val+keyClick; console.log(sum);  document.getElementById("value").value=sum;    show();}
+function keyI(){ removeAlert(); setFocus(); var keyClick = document.getElementById("key-clickI").innerText; var val = document.getElementById("value").value;  var sum=val+keyClick; console.log(sum);  document.getElementById("value").value=sum;    show();}
+function keyO(){ removeAlert(); setFocus(); var keyClick = document.getElementById("key-clickO").innerText; var val = document.getElementById("value").value;  var sum=val+keyClick; console.log(sum);  document.getElementById("value").value=sum;    show();}
+function keyP(){ removeAlert(); setFocus(); var keyClick = document.getElementById("key-clickP").innerText; var val = document.getElementById("value").value;  var sum=val+keyClick; console.log(sum);  document.getElementById("value").value=sum;    show();}
+function keyA(){ removeAlert(); setFocus(); var keyClick = document.getElementById("key-clickA").innerText; var val = document.getElementById("value").value;  var sum=val+keyClick; console.log(sum);  document.getElementById("value").value=sum;    show();}
+function keyS(){ removeAlert(); setFocus(); var keyClick = document.getElementById("key-clickS").innerText; var val = document.getElementById("value").value;  var sum=val+keyClick; console.log(sum);  document.getElementById("value").value=sum;    show();}
+function keyD(){ removeAlert(); setFocus(); var keyClick = document.getElementById("key-clickD").innerText; var val = document.getElementById("value").value;  var sum=val+keyClick; console.log(sum);  document.getElementById("value").value=sum;    show();}
+function keyF(){ removeAlert(); setFocus(); var keyClick = document.getElementById("key-clickF").innerText; var val = document.getElementById("value").value;  var sum=val+keyClick; console.log(sum);  document.getElementById("value").value=sum;    show();}
+function keyG(){ removeAlert(); setFocus(); var keyClick = document.getElementById("key-clickG").innerText; var val = document.getElementById("value").value;  var sum=val+keyClick; console.log(sum);  document.getElementById("value").value=sum;    show();}
+function keyH(){ removeAlert(); setFocus(); var keyClick = document.getElementById("key-clickH").innerText; var val = document.getElementById("value").value;  var sum=val+keyClick; console.log(sum);  document.getElementById("value").value=sum;    show();}
+function keyJ(){ removeAlert(); setFocus(); var keyClick = document.getElementById("key-clickJ").innerText; var val = document.getElementById("value").value;  var sum=val+keyClick; console.log(sum);  document.getElementById("value").value=sum;    show();}
+function keyK(){ removeAlert(); setFocus(); var keyClick = document.getElementById("key-clickK").innerText; var val = document.getElementById("value").value;  var sum=val+keyClick; console.log(sum);  document.getElementById("value").value=sum;    show();}
+function keyL(){ removeAlert(); setFocus(); var keyClick = document.getElementById("key-clickL").innerText; var val = document.getElementById("value").value;  var sum=val+keyClick; console.log(sum);  document.getElementById("value").value=sum;    show();}
+function keyZ(){ removeAlert(); setFocus(); var keyClick = document.getElementById("key-clickZ").innerText; var val = document.getElementById("value").value;  var sum=val+keyClick; console.log(sum);  document.getElementById("value").value=sum;    show();}
+function keyX(){ removeAlert(); setFocus(); var keyClick = document.getElementById("key-clickX").innerText; var val = document.getElementById("value").value;  var sum=val+keyClick; console.log(sum);  document.getElementById("value").value=sum;    show();}
+function keyC(){ removeAlert(); setFocus(); var keyClick = document.getElementById("key-clickC").innerText; var val = document.getElementById("value").value;  var sum=val+keyClick; console.log(sum);  document.getElementById("value").value=sum;    show();}
+function keyV(){ removeAlert(); setFocus(); var keyClick = document.getElementById("key-clickV").innerText; var val = document.getElementById("value").value;  var sum=val+keyClick; console.log(sum);  document.getElementById("value").value=sum;    show();}
+function keyB(){ removeAlert(); setFocus(); var keyClick = document.getElementById("key-clickB").innerText; var val = document.getElementById("value").value;  var sum=val+keyClick; console.log(sum);  document.getElementById("value").value=sum;    show();}
+function keyN(){ removeAlert(); setFocus(); var keyClick = document.getElementById("key-clickN").innerText; var val = document.getElementById("value").value;  var sum=val+keyClick; console.log(sum);  document.getElementById("value").value=sum;    show();}
+function keyM(){ removeAlert(); setFocus(); var keyClick = document.getElementById("key-clickM").innerText; var val = document.getElementById("value").value;  var sum=val+keyClick; console.log(sum);  document.getElementById("value").value=sum;    show();}
+function keyComma(){ removeAlert(); setFocus(); var keyClick = document.getElementById("key-click-Comma").innerText; var val = document.getElementById("value").value;  var sum=val+keyClick; console.log(sum); document.getElementById("value").value=sum;    show();}
+function keyShift(){  
+    setFocus(); removeAlert();
+    var keyClick = document.getElementById("key-clickShift").classList.toggle("bg");
+    var item = document.getElementById("key-clickShift").classList.item(1);
+    if(item!=null)
+    {
+            var keyClick = document.getElementById("key-clickQ").innerText="Q"; 
+            var keyClick = document.getElementById("key-clickW").innerText="W";
+            var keyClick = document.getElementById("key-clickE").innerText="E";
+            var keyClick = document.getElementById("key-clickR").innerText="R";
+            var keyClick = document.getElementById("key-clickT").innerText="T";
+            var keyClick = document.getElementById("key-clickY").innerText="Y";
+            var keyClick = document.getElementById("key-clickU").innerText="U";
+            var keyClick = document.getElementById("key-clickI").innerText="I";
+            var keyClick = document.getElementById("key-clickO").innerText="O";
+            var keyClick = document.getElementById("key-clickP").innerText="P";
+            var keyClick = document.getElementById("key-clickA").innerText="A";
+            var keyClick = document.getElementById("key-clickS").innerText="S";
+            var keyClick = document.getElementById("key-clickD").innerText="D";
+            var keyClick = document.getElementById("key-clickF").innerText="F";
+            var keyClick = document.getElementById("key-clickG").innerText="G";
+            var keyClick = document.getElementById("key-clickH").innerText="H";
+            var keyClick = document.getElementById("key-clickJ").innerText="J";
+            var keyClick = document.getElementById("key-clickK").innerText="K";
+            var keyClick = document.getElementById("key-clickL").innerText="L";
+            var keyClick = document.getElementById("key-clickZ").innerText="Z";
+            var keyClick = document.getElementById("key-clickX").innerText="X";
+            var keyClick = document.getElementById("key-clickC").innerText="C";
+            var keyClick = document.getElementById("key-clickV").innerText="V";
+            var keyClick = document.getElementById("key-clickB").innerText="B";
+            var keyClick = document.getElementById("key-clickN").innerText="N";
+            var keyClick = document.getElementById("key-clickM").innerText="M";
+            var keyClick = document.getElementById("key-click-Comma").innerText="<";
+            
+        }
+        else{
+            
+            var keyClick = document.getElementById("key-clickQ").innerText="q"; 
+            var keyClick = document.getElementById("key-clickW").innerText="w";
+            var keyClick = document.getElementById("key-clickE").innerText="e";
+            var keyClick = document.getElementById("key-clickR").innerText="r";
+            var keyClick = document.getElementById("key-clickT").innerText="t";
+            var keyClick = document.getElementById("key-clickY").innerText="y";
+            var keyClick = document.getElementById("key-clickU").innerText="u";
+            var keyClick = document.getElementById("key-clickI").innerText="i";
+            var keyClick = document.getElementById("key-clickO").innerText="o";
+            var keyClick = document.getElementById("key-clickP").innerText="p";
+            var keyClick = document.getElementById("key-clickA").innerText="a";
+            var keyClick = document.getElementById("key-clickS").innerText="s";
+            var keyClick = document.getElementById("key-clickD").innerText="d";
+            var keyClick = document.getElementById("key-clickF").innerText="f";
+            var keyClick = document.getElementById("key-clickG").innerText="g";
+            var keyClick = document.getElementById("key-clickH").innerText="h";
+            var keyClick = document.getElementById("key-clickJ").innerText="j";
+            var keyClick = document.getElementById("key-clickK").innerText="k";
+            var keyClick = document.getElementById("key-clickL").innerText="l";
+            var keyClick = document.getElementById("key-clickZ").innerText="z";
+            var keyClick = document.getElementById("key-clickX").innerText="x";
+            var keyClick = document.getElementById("key-clickC").innerText="c";
+            var keyClick = document.getElementById("key-clickV").innerText="v";
+            var keyClick = document.getElementById("key-clickB").innerText="b";
+            var keyClick = document.getElementById("key-clickN").innerText="n";
+            var keyClick = document.getElementById("key-clickM").innerText="m";
+            var keyClick = document.getElementById("key-click-Comma").innerText=",";
+        }
+  }
+  function setFocus(){
+    document.getElementById("value").focus();
+  }
+  function showKeyboard(){
+    var btn = document.getElementById("showKeyboard").style.display="none";
+    var KeyBoard = document.getElementById("center");
+    KeyBoard.style.marginTop="0px";
+    KeyBoard.style.transition="2s ease";
+  }
+  var KeyBoard = document.getElementById("center");
+    KeyBoard.style.marginTop="-350px";
+</script>
